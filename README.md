@@ -62,6 +62,44 @@ def admin():
     return {"message": "Admin route is protected"}
 ```
 
+### Protecting FastAPI Documentation
+
+You can protect your FastAPI's Swagger UI and ReDoc documentation by including their URLs in the protected routes:
+
+```python
+from fastapi import FastAPI
+from fastapi_basic_auth import FastAPIBasicAuthMiddleware
+
+app = FastAPI()
+
+# Add middleware to protect docs
+auth = FastAPIBasicAuthMiddleware(
+    urls=[
+        "/docs",           # Swagger UI
+        "/redoc",         # ReDoc
+        "/openapi.json",  # OpenAPI schema
+        "/protected"      # Your protected routes
+    ],
+    users={"admin": "password"}
+)
+app.add_middleware(auth.build)
+
+@app.get("/protected")
+def protected():
+    return {"message": "This route is protected"}
+
+@app.get("/public")
+def public():
+    return {"message": "This route is public"}
+```
+
+This setup will:
+- Require authentication to access Swagger UI at `/docs`
+- Require authentication to access ReDoc at `/redoc`
+- Protect the OpenAPI schema at `/openapi.json`
+- Allow public access to non-protected routes
+- Maintain the interactive features of Swagger UI after authentication
+
 The `BasicAuthUser` model includes built-in validation:
 - Username must be alphanumeric (can include underscores and hyphens)
 - Both username and password are required fields
@@ -74,3 +112,7 @@ The `BasicAuthUser` model includes built-in validation:
   - Use simple dictionary for quick setup
   - Use BasicAuthUser model for additional validation
 - Secure password comparison
+- FastAPI docs protection
+  - Swagger UI (/docs)
+  - ReDoc (/redoc)
+  - OpenAPI schema (/openapi.json)
