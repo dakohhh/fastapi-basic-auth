@@ -1,11 +1,23 @@
 [tool.poetry]
 name = "fastapi-basic-auth"
 version = "0.1.2"
-description = ""
+description = "A simple and flexible Basic Authentication middleware for FastAPI applications"
 license = "MIT"
 authors = ["dakohhh <wiizzydreadmill@gmail.com>"]
 readme = "README.md"
-repository = "https://github.com/dakohhh/hellow-world"
+repository = "https://github.com/dakohhh/fastapi-basic-auth"
+keywords = ["fastapi", "authentication", "basic-auth", "middleware"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Framework :: FastAPI",
+]
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
