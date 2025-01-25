@@ -1,0 +1,55 @@
+[tool.poetry]
+name = "fastapi-basic-auth"
+version = "0.1.2"
+description = ""
+license = "MIT"
+authors = ["dakohhh <wiizzydreadmill@gmail.com>"]
+readme = "README.md"
+repository = "https://github.com/dakohhh/hellow-world"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<4.0"
+pydantic = "^2.10.6"
+fastapi = "^0.115.7"
+httpx = "^0.28.1"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.7.2"
+pytest = "^8.3.3"
+black = "^24.10.0"
+mypy = "^1.13.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+line-length = 120
+target-version = ['py39']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | migrations
+)/
+'''
+skip-string-normalization = true
+skip-magic-trailing-comma = true
+verbose = true
+fast = true
+
+
+[tool.pytest]
+addopts = "-v"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
