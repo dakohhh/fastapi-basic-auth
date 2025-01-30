@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fastapi-basic-auth"
-version = "0.1.2"
+version = "0.1.5"
 description = "A simple and flexible Basic Authentication middleware for FastAPI applications"
 license = "MIT"
 authors = ["dakohhh <wiizzydreadmill@gmail.com>"]

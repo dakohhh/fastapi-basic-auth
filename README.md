@@ -23,7 +23,7 @@ auth = FastAPIBasicAuthMiddleware(
     urls=["/protected"],
     users={"admin": "password"}
 )
-app.add_middleware(auth.build)
+app.add_middleware(auth)
 
 @app.get("/protected")
 def protected():
@@ -51,7 +51,7 @@ auth = FastAPIBasicAuthMiddleware(
     urls=["/protected", "/admin"],  # Protect multiple routes
     users=users
 )
-app.add_middleware(auth.build)
+app.add_middleware(auth)
 
 @app.get("/protected")
 def protected():
@@ -82,7 +82,7 @@ auth = FastAPIBasicAuthMiddleware(
     ],
     users={"admin": "password"}
 )
-app.add_middleware(auth.build)
+app.add_middleware(auth)
 
 @app.get("/protected")
 def protected():
